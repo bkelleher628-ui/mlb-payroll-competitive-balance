@@ -1,60 +1,42 @@
-# mlb-payroll-competitive-balance
-This project analyzes the relationship between Major League Baseball team payroll and regular-season wins from 2011–2024.
+# MLB Payroll & Competitive Balance
 
-Using R, I built linear and log-linear regression models to examine whether higher payroll is associated with more wins and whether diminishing returns exist at higher spending levels. I also simulated salary-cap scenarios based on each season's median payroll and measured changes in competitive balance using the standard deviation of predicted wins and the Gini coefficient.
+### An R-based analysis of MLB payroll, team performance, diminishing returns, and hypothetical salary-cap scenarios from 2011–2024.
 
-Project Question
+## Project Overview
 
-Does money buy wins in Major League Baseball, and would a salary cap meaningfully improve competitive balance?
+Major League Baseball does not use a traditional hard salary cap, which allows significant differences in team payrolls across the league.
 
-Methods
+This project examines a simple but important baseball analytics question:
 
-Cleaned MLB team payroll data in R
+**How much does payroll actually influence winning, and would limiting payroll improve competitive balance?**
 
-Modeled wins using linear regression
+Using MLB team-season data from 2011 through 2024, I analyzed the relationship between team payroll and regular-season wins using regression modeling in R. I then created hypothetical salary-cap scenarios and measured how those changes affected the predicted distribution of wins across the league.
 
-Modeled wins using log-payroll regression to capture diminishing returns
+## Research Questions
 
-Simulated salary-cap scenarios at:
+The project focused on three main questions:
 
-1.10x yearly median payroll
+1. Does higher team payroll lead to more regular-season wins?
+2. Are there diminishing returns as teams continue increasing payroll?
+3. Would a salary cap meaningfully improve competitive balance in MLB?
 
-1.25x yearly median payroll
+## Methods
 
-1.50x yearly median payroll
+The analysis was completed in **R** and included:
 
-Compared competitive balance before and after the cap simulations
+- Data cleaning and transformation
+- Exploratory data analysis
+- Linear regression
+- Log-linear regression
+- Correlation analysis
+- Salary-cap simulations
+- Gini coefficient calculations
+- Standard deviation comparisons
+- Data visualization with `ggplot2`
 
-Key Findings
+Two primary regression models were compared:
 
-Payroll has a statistically significant positive relationship with wins.
-
-The log-payroll model suggests diminishing returns to additional spending.
-
-Payroll explains part of team success, but not all of it.
-
-Salary-cap simulations improve predicted competitive balance, but the effect is moderate rather than dramatic.
-
-Files
-
-mlb_payroll_competitive_balance.R — main R script for cleaning, modeling, simulation, and visualization
-
-MLB_Payroll_Competitive_Balance_Presentation.pptx — portfolio presentation summarizing the project
-
-Tools Used
-
-R
-
-dplyr
-
-ggplot2
-
-Regression modeling
-
-Simulation
-
-Data visualization
-
-Notes
-
-The project is intended as a baseball analytics portfolio piece. It frames a real MLB policy question as a reproducible data science workflow: clean the data, build models, simulate a rule change, and communicate the results clearly.
+```text
+Wins = β0 + β1(Payroll) + ε
+and
+Wins = β0 + β1 log(Payroll) + ε
